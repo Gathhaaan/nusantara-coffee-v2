@@ -1,0 +1,14 @@
+body {
+    margin: 0; font-family: sans-serif;
+    background: url('../images/backgorund-kopi1.jpg') no-repeat center fixed; background-size: cover;
+    display: flex; align-items: center; justify-content: center; height: 100vh;
+}
+.auth-box {
+    background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
+    padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2);
+    width: 100%; max-width: 400px; text-align: center; color: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+button { width: 95%; padding: 10px; background: #2f6b3b; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+button:hover { background: #1e4d26; }
+a { color: #ffd700; text-decoration: none; font-weight: bold; }
