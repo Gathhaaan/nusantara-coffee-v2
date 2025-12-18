@@ -2,27 +2,27 @@
 session_start();
 include 'includes/db.php';
 
-// Cek Login
-if (!isset($_SESSION['login'])) { header("Location: login.php"); exit; }
+// --- LOGIKA PENGAMAN (GEMBOK) ---
+// Jika user belum login, tendang ke halaman login
+if (!isset($_SESSION['login'])) {
+    echo "<script>
+            alert('Silakan LOGIN terlebih dahulu untuk mengakses Marketplace!');
+            window.location.href = 'login.php';
+          </script>";
+    exit;
+}
+// --------------------------------
 
-// LOGIKA PENCARIAN
+// Logika Pencarian
 $where_clause = "";
 $pesan_pencarian = "";
-
 if (isset($_GET['cari'])) {
     $keyword = mysqli_real_escape_string($conn, $_GET['cari']);
-    $where_clause = "WHERE products.nama_produk LIKE '%$keyword%' 
-                     OR products.daerah LIKE '%$keyword%' 
-                     OR products.deskripsi LIKE '%$keyword%'";
+    $where_clause = "WHERE products.nama_produk LIKE '%$keyword%' OR products.daerah LIKE '%$keyword%' OR products.deskripsi LIKE '%$keyword%'";
     $pesan_pencarian = "Menampilkan hasil untuk: <strong>'$keyword'</strong>";
 }
 
-$query = "SELECT products.*, users.nama_lengkap 
-          FROM products 
-          JOIN users ON products.user_id = users.id 
-          $where_clause 
-          ORDER BY products.id DESC";
-
+$query = "SELECT products.*, users.nama_lengkap FROM products JOIN users ON products.user_id = users.id $where_clause ORDER BY products.id DESC";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -49,21 +49,16 @@ $result = mysqli_query($conn, $query);
             <a href="calculator.php" class="nav-link">Kalkulator</a>
             <a href="matcher.php" class="nav-link">Cek Cocoklogi</a>
             <a href="article.php" class="nav-link">Artikel</a>
-            
-            <?php if (isset($_SESSION['login'])) : ?>
-                <a href="marketplace.php" class="nav-link is-active">Marketplace</a>
-                <a href="logout.php" class="nav-link nav-btn-logout">Logout</a>
-            <?php else : ?>
-                <a href="contact.php" class="nav-link">Kontak</a>
-                <a href="login.php" class="nav-link nav-btn-login">Login</a>
-            <?php endif; ?>
+            <a href="marketplace.php" class="nav-link is-active">Marketplace</a>
+            <a href="contact.php" class="nav-link">Kontak</a>
+            <a href="logout.php" class="nav-link nav-btn-logout">Logout</a>
           </nav>
       </div>
     </header>
 
     <div style="background:#f9f9f9; padding:3rem 1rem; text-align:center; margin-bottom:2rem;">
         <h1 class="section-title">Pasar Kopi</h1>
-        <p class="muted">Temukan biji kopi terbaik dari seluruh nusantara.</p>
+        <p class="muted">Halo, <strong><?= $_SESSION['nama'] ?? 'User'; ?></strong>! Temukan biji kopi terbaik di sini.</p>
         <div style="margin-top: 1.5rem; display: flex; gap: 10px; justify-content: center;">
             <a href="tambah_produk.php" class="btn btn-primary" style="background:#d97706;">+ Jual Kopi Saya</a>
             <a href="matcher.php" class="btn btn-secondary">🔍 Bantu Saya Memilih</a>
@@ -73,8 +68,7 @@ $result = mysqli_query($conn, $query);
     <div class="container">
         <?php if($pesan_pencarian) : ?>
             <div class="search-alert">
-                <?= $pesan_pencarian ?> 
-                <a href="marketplace.php" class="reset-link">(Reset Filter)</a>
+                <?= $pesan_pencarian ?> <a href="marketplace.php" class="reset-link">(Reset Filter)</a>
             </div>
         <?php endif; ?>
 

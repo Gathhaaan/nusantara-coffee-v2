@@ -20,11 +20,12 @@
             <a href="calculator.php" class="nav-link">Kalkulator</a>
             <a href="matcher.php" class="nav-link">Cek Cocoklogi</a>
             <a href="article.php" class="nav-link">Artikel</a>
+            <a href="marketplace.php" class="nav-link">Marketplace</a>
+            <a href="contact.php" class="nav-link">Kontak</a>
+            
             <?php if (isset($_SESSION['login'])) : ?>
-                <a href="marketplace.php" class="nav-link">Marketplace</a>
                 <a href="logout.php" class="nav-link nav-btn-logout">Logout</a>
             <?php else : ?>
-                <a href="contact.php" class="nav-link">Kontak</a>
                 <a href="login.php" class="nav-link nav-btn-login">Login</a>
             <?php endif; ?>
           </nav>
@@ -41,11 +42,7 @@
         <div class="hero-inner">
           <h1 class="hero-title">Jelajah Kopi Nusantara</h1>
           <p class="hero-subtitle">Dari Sabang sampai Merauke, setiap pulau menghadirkan karakter rasa unik.</p>
-          <?php if (isset($_SESSION['login'])) : ?>
-             <a class="btn btn-primary" href="marketplace.php">Belanja Sekarang</a>
-          <?php else : ?>
-             <a class="btn btn-primary" href="login.php">Mulai Belanja</a>
-          <?php endif; ?>
+          <a class="btn btn-primary" href="marketplace.php">Belanja Sekarang</a>
         </div>
       </section>
 
@@ -112,15 +109,13 @@
           <p class="muted">Arahkan kursor untuk info singkat, atau <strong style="color:var(--accent)">KLIK wilayah</strong> untuk cari produk.</p>
           <div class="map-wrapper" style="margin-top: 2rem;">
             <img src="assets/images/peta-silhouette-indonesia-map.jpg" alt="Peta Indonesia" class="map-image">
-            
-            <button class="hotspot hs-sumatra" data-region="sumatra" aria-label="Sumatra"></button>
-            <button class="hotspot hs-java" data-region="java" aria-label="Jawa"></button>
-            <button class="hotspot hs-kalimantan" data-region="kalimantan" aria-label="Kalimantan"></button>
-            <button class="hotspot hs-sulawesi" data-region="sulawesi" aria-label="Sulawesi"></button>
-            <button class="hotspot hs-bali-ntb-ntt" data-region="baliNtt" aria-label="Bali"></button>
-            <button class="hotspot hs-maluku" data-region="maluku" aria-label="Maluku"></button>
-            <button class="hotspot hs-papua" data-region="papua" aria-label="Papua"></button>
-
+            <button class="hotspot hs-sumatra" data-region="sumatra"></button>
+            <button class="hotspot hs-java" data-region="java"></button>
+            <button class="hotspot hs-kalimantan" data-region="kalimantan"></button>
+            <button class="hotspot hs-sulawesi" data-region="sulawesi"></button>
+            <button class="hotspot hs-bali-ntb-ntt" data-region="baliNtt"></button>
+            <button class="hotspot hs-maluku" data-region="maluku"></button>
+            <button class="hotspot hs-papua" data-region="papua"></button>
             <div id="tooltip" hidden></div>
           </div>
       </section>

@@ -38,12 +38,12 @@ if (isset($_POST['analyze'])) {
             <a href="calculator.php" class="nav-link">Kalkulator</a>
             <a href="matcher.php" class="nav-link is-active">Cek Cocoklogi</a>
             <a href="article.php" class="nav-link">Artikel</a>
+            <a href="marketplace.php" class="nav-link">Marketplace</a>
+            <a href="contact.php" class="nav-link">Kontak</a>
             
             <?php if (isset($_SESSION['login'])) : ?>
-                <a href="marketplace.php" class="nav-link">Marketplace</a>
                 <a href="logout.php" class="nav-link nav-btn-logout">Logout</a>
             <?php else : ?>
-                <a href="contact.php" class="nav-link">Kontak</a>
                 <a href="login.php" class="nav-link nav-btn-login">Login</a>
             <?php endif; ?>
           </nav>
@@ -57,31 +57,31 @@ if (isset($_POST['analyze'])) {
         </div>
 
         <?php if (!$rekomendasi) : ?>
-        <div class="card" style="padding: 2rem;">
+        <div class="feature-card" style="padding: 2rem; max-width: 600px; margin: 0 auto; text-align: left;">
             <form method="POST">
-                <div class="form-group">
-                    <label class="form-label" style="font-size: 1.2rem;">1. Rasa kopi seperti apa?</label>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label style="display:block; font-weight:600; margin-bottom:0.5rem;">1. Rasa kopi seperti apa?</label>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <label style="background: #eee; padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1;">
+                        <label style="background: #f3f4f6; padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1;">
                             <input type="radio" name="rasa" value="asam" required> 🍋 Masam Segar
                         </label>
-                        <label style="background: #eee; padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1;">
+                        <label style="background: #f3f4f6; padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1;">
                             <input type="radio" name="rasa" value="pahit"> 🍫 Pahit Mantap
                         </label>
-                        <label style="background: #eee; padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1;">
+                        <label style="background: #f3f4f6; padding: 1rem; border-radius: 8px; cursor: pointer; flex: 1;">
                             <input type="radio" name="rasa" value="seimbang"> ⚖️ Seimbang
                         </label>
                     </div>
                 </div>
-                <div class="form-group" style="margin-top: 2rem;">
-                    <label class="form-label" style="font-size: 1.2rem;">2. Kapan Anda minum kopi?</label>
-                    <select name="suasana" class="form-control">
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <label style="display:block; font-weight:600; margin-bottom:0.5rem;">2. Kapan Anda minum kopi?</label>
+                    <select name="suasana" style="width:100%; padding:0.8rem; border-radius:8px; border:1px solid #ddd;">
                         <option value="pagi">Pagi Hari (Butuh Melek)</option>
                         <option value="kerja">Saat Kerja (Butuh Fokus)</option>
                         <option value="santai">Sore Santai</option>
                     </select>
                 </div>
-                <button type="submit" name="analyze" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">ANALISA SELERA SAYA 🤖</button>
+                <button type="submit" name="analyze" class="btn btn-primary" style="width: 100%;">ANALISA SELERA SAYA 🤖</button>
             </form>
         </div>
         <?php else : ?>
@@ -99,11 +99,11 @@ if (isset($_POST['analyze'])) {
                         <div class="product-body">
                             <h3><?= $row['nama_produk']; ?></h3>
                             <p class="product-price">Rp <?= number_format($row['harga']); ?></p>
-                            <a href="marketplace.php?cari=<?= $row['nama_produk']; ?>" class="btn btn-primary btn-sm">Lihat Detail</a>
+                            <a href="marketplace.php?cari=<?= $row['nama_produk']; ?>" class="btn btn-primary">Lihat Detail</a>
                         </div>
                     </div>
                 <?php endwhile; 
-            } else { echo "<p class='text-center muted'>Belum ada stok kopi yang cocok.</p>"; }
+            } else { echo "<p class='text-center muted' style='grid-column:1/-1;'>Belum ada stok kopi yang cocok di database.</p>"; }
             ?>
         </div>
         <?php endif; ?>
