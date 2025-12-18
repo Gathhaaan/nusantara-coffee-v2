@@ -46,9 +46,9 @@ $result = mysqli_query($conn, $query);
           </a>
           <nav class="nav">
             <a href="index.php" class="nav-link">Beranda</a>
+            <a href="article.php" class="nav-link">Artikel</a>
             <a href="calculator.php" class="nav-link">Kalkulator</a>
             <a href="matcher.php" class="nav-link">Cek Cocoklogi</a>
-            <a href="article.php" class="nav-link">Artikel</a>
             <a href="marketplace.php" class="nav-link is-active">Marketplace</a>
             <a href="contact.php" class="nav-link">Kontak</a>
             <a href="logout.php" class="nav-link nav-btn-logout">Logout</a>
