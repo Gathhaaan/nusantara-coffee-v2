@@ -9,13 +9,18 @@ if (isset($_POST['submit'])) {
     $daerah = $_POST['daerah'];
     $harga = $_POST['harga'];
     
-    $foto = $_FILES['gambar']['name'];
-    $tmp = $_FILES['gambar']['tmp_name'];
-    $baru = uniqid() . "." . pathinfo($foto, PATHINFO_EXTENSION);
-    
-    if (move_uploaded_file($tmp, "uploads/" . $baru)) {
-        mysqli_query($conn, "INSERT INTO products (user_id, nama_produk, daerah, harga, stok, gambar) VALUES ('$uid', '$nama', '$daerah', '$harga', 1, '$baru')");
-        header("Location: marketplace.php");
+    // PROSES UPLOAD KE DATABASE (BLOB)
+    if (!empty($_FILES['gambar']['tmp_name'])) {
+        $fileContent = addslashes(file_get_contents($_FILES['gambar']['tmp_name']));
+        
+        $query = "INSERT INTO products (user_id, nama_produk, daerah, harga, stok, gambar) 
+                  VALUES ('$uid', '$nama', '$daerah', '$harga', 1, '$fileContent')";
+                  
+        if(mysqli_query($conn, $query)){
+            header("Location: marketplace.php");
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
     }
 }
 ?>
