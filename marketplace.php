@@ -39,10 +39,10 @@ $result = mysqli_query($conn, $query);
           </a>
           <nav class="nav">
             <a href="index.php" class="nav-link">Beranda</a>
-            <a href="article.php" class="nav-link is-active">Artikel</a>
+            <a href="article.php" class="nav-link">Artikel</a>
             <a href="calculator.php" class="nav-link">Kalkulator</a>
             <a href="matcher.php" class="nav-link">Cek Cocoklogi</a>
-            <a href="marketplace.php" class="nav-link">Marketplace</a>
+            <a href="marketplace.php" class="nav-link is-active">Marketplace</a>
             <a href="contact.php" class="nav-link">Kontak</a>
             
             <?php if (isset($_SESSION['login'])) : ?>
@@ -90,7 +90,7 @@ $result = mysqli_query($conn, $query);
                         <h3><?= $row['nama_produk']; ?></h3>
                         <p class="muted">Penjual: <?= $row['nama_lengkap']; ?></p>
                         <p class="product-price">Rp <?= number_format($row['harga']); ?></p>
-                        <a href="https://wa.me/?text=Saya mau beli <?= $row['nama_produk']; ?>" target="_blank" class="btn btn-primary">Beli via WA</a>
+                        <a href="https://wa.me/6281232678520/?text=Saya mau beli <?= $row['nama_produk']; ?>" target="_blank" class="btn btn-primary">Beli via WA</a>
                     </div>
                 </div>
             <?php endwhile; ?>

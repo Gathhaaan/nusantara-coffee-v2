@@ -19,7 +19,7 @@
             <a href="calculator.php" class="nav-link">Kalkulator</a>
             <a href="matcher.php" class="nav-link">Cek Cocoklogi</a>
             <a href="marketplace.php" class="nav-link">Marketplace</a>
-            <a href="contact.php" class="nav-link">Kontak</a>
+            <a href="contact.php" class="nav-link is-active">Kontak</a>
             
             <?php if (isset($_SESSION['login'])) : ?>
                 <a href="logout.php" class="nav-link nav-btn-logout">Logout</a>

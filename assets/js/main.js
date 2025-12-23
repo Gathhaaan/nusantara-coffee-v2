@@ -22,7 +22,7 @@ function setupHeroSlideshow() {
     images[currentIndex].classList.remove("active");
     currentIndex = (currentIndex + 1) % images.length;
     images[currentIndex].classList.add("active");
-  }, 4000);
+  }, 7000);
 }
 
 // 3. PETA INTERAKTIF
