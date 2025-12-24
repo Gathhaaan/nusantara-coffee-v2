@@ -1,7 +1,21 @@
 <?php
 session_start();
 include 'includes/db.php';
-if (!isset($_SESSION['login'])) { header("Location: login.php"); exit; }
+// 1. Cek Login
+if (!isset($_SESSION['login'])) { 
+    header("Location: login.php"); 
+    exit; 
+}
+
+// 2. Cek Role (HANYA DISINI KITA MELARANG USER BIASA)
+// Jika role BUKAN seller DAN BUKAN admin -> Tendang ke Marketplace
+if (!isset($_SESSION['role']) || ($_SESSION['role'] != 'seller' && $_SESSION['role'] != 'admin')) {
+    echo "<script>
+            alert('Maaf, akun Anda adalah PEMBELI. Anda tidak memiliki akses untuk menjual produk.'); 
+            window.location.href='marketplace.php';
+          </script>";
+    exit;
+}
 
 if (isset($_POST['submit'])) {
     $uid = $_SESSION['user_id'];

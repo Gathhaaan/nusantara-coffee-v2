@@ -53,6 +53,23 @@ $resultShowcase = mysqli_query($conn, $queryShowcase);
         </div>
       </section>
 
+      <section class="container text-center" style="padding: 5rem 1rem 2rem;">
+          <div style="max-width: 800px; margin: 0 auto;">
+              <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">
+                  Selamat Datang di Nusantara Coffee
+              </span>
+              <h2 style="font-size: 2.5rem; margin-top: 1rem; margin-bottom: 1.5rem;">
+                  Menghubungkan Rasa, <br>Menyatukan Indonesia.
+              </h2>
+              <p class="muted" style="font-size: 1.15rem; line-height: 1.8;">
+                  Nusantara Coffee hadir sebagai jembatan digital yang mempertemukan petani kopi lokal terbaik dari Aceh hingga Papua dengan para penikmat kopi sejati. Kami percaya bahwa setiap biji kopi menyimpan cerita tanah kelahirannya—sebuah warisan rasa yang layak dirayakan oleh dunia.
+              </p>
+              <div style="margin-top: 2rem; width: 60px; height: 4px; background: var(--accent); margin-left: auto; margin-right: auto; border-radius: 2px;"></div>
+          </div>
+      </section>
+
+      <section class="features-container">
+
       <section class="features-container">
           <div class="features-grid">
               <div class="feature-card">

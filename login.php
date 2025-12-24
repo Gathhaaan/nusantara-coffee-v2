@@ -14,7 +14,15 @@ if (isset($_POST['login'])) {
             $_SESSION['login'] = true;
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['nama'] = $row['nama_lengkap'];
-            header("Location: index.php"); exit;
+            $_SESSION['role'] = $row['role']; // <--- PENTING: SIMPAN ROLE
+
+            // Redirect sesuai role
+            if ($row['role'] == 'admin') {
+                header("Location: admin.php");
+            } else {
+                header("Location: index.php");
+            }
+            exit;
         }
     }
     $message = "<div class='alert alert-error'>Username atau Password salah!</div>";
